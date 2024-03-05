@@ -8,6 +8,7 @@ public class AttractorBehaviour : MonoBehaviour
 
     [SerializeField] private float attractionForce = 10f;
     [SerializeField] private float attractionRadius = 10f;
+    [SerializeField] private float maxForce = 100f;
 
     private Vector2 attractorPosition;
     private Vector2 myPosition;
@@ -20,15 +21,15 @@ public class AttractorBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach (AttractionBehaviour a in ab)
+        for(int i = 0; i < ab.Length; i++)
         {
-            attractorPosition = a.transform.position;
+            attractorPosition = ab[i].transform.position;
             myPosition = transform.position;
             distance = Vector2.Distance(attractorPosition, myPosition);
 
             if (distance < attractionRadius)
             {
-                a.Attract(myPosition, attractionForce);
+                ab[i].Attract(myPosition, attractionForce, maxForce);
             }
         }
     }

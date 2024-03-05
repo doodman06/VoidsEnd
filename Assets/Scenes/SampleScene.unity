@@ -1332,7 +1332,7 @@ GameObject:
   - component: {fileID: 1063729014}
   - component: {fileID: 1063729013}
   m_Layer: 0
-  m_Name: Circle
+  m_Name: Vortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1350,8 +1350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f84459076c13f46aa9379d3043204b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractionForce: 11
-  attractionRadius: 5
+  attractionForce: 50
+  attractionRadius: 10
+  maxForce: 100
 --- !u!212 &1063729014
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1394,7 +1395,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.11320752, g: 0.041088723, b: 0.017621927, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1503,7 +1504,7 @@ Transform:
   m_GameObject: {fileID: 1184807674}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0, z: 0}
+  m_LocalPosition: {x: 1.93, y: 0.9, z: -1}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
