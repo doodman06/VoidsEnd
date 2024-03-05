@@ -6,9 +6,9 @@ public class AttractorBehaviour : MonoBehaviour
 {
     private AttractionBehaviour[] ab;
 
-    [SerializeField] private float attractionForce = 10f;
-    [SerializeField] private float attractionRadius = 10f;
-    [SerializeField] private float maxForce = 100f;
+    [SerializeField] private float attractionForce;
+    [SerializeField] private float attractionRadius;
+    [SerializeField] private float maxForce;
 
     private Vector2 attractorPosition;
     private Vector2 myPosition;
