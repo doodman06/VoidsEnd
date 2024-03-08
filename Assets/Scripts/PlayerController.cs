@@ -4,14 +4,18 @@ using UnityEngine;
 
 [RequireComponent(typeof(MovementBehaviour))]
 [RequireComponent(typeof(JumpBehaviour))]
+[RequireComponent(typeof(SkillManager))]
 public class PlayerController : MonoBehaviour
 {
     private MovementBehaviour movementBehaviour;
     private JumpBehaviour jumpBehaviour;
+    private SkillManager skillManager;
     private void Awake()
     {
         movementBehaviour = GetComponent<MovementBehaviour>();
         jumpBehaviour = GetComponent<JumpBehaviour>();
+        skillManager = GetComponent<SkillManager>();
+
     }
 
     private void Update()
@@ -33,5 +37,11 @@ public class PlayerController : MonoBehaviour
         {
             jumpBehaviour.Jump();
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            skillManager.UseActiveSkill();
+        }
+         
     }   
 }
