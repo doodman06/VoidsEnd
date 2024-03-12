@@ -5,16 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(MovementBehaviour))]
 [RequireComponent(typeof(JumpBehaviour))]
 [RequireComponent(typeof(SkillManager))]
+[RequireComponent(typeof(PlayerBehaviour))]
 public class PlayerController : MonoBehaviour
 {
     private MovementBehaviour movementBehaviour;
     private JumpBehaviour jumpBehaviour;
     private SkillManager skillManager;
+    private PlayerBehaviour playerBehaviour;
     private void Awake()
     {
         movementBehaviour = GetComponent<MovementBehaviour>();
         jumpBehaviour = GetComponent<JumpBehaviour>();
         skillManager = GetComponent<SkillManager>();
+        playerBehaviour = GetComponent<PlayerBehaviour>();
 
     }
 
@@ -22,20 +25,20 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-            movementBehaviour.Move(1);
+            playerBehaviour.setCurrentInput(PlayerInput.MoveRight);
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            movementBehaviour.Move(-1);
+            playerBehaviour.setCurrentInput(PlayerInput.MoveLeft);
         }
         else
         {
-            movementBehaviour.Stop();
+            playerBehaviour.setCurrentInput(PlayerInput.None);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jumpBehaviour.Jump();
+            playerBehaviour.setCurrentInput(PlayerInput.Jump);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
