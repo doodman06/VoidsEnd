@@ -6,11 +6,14 @@ public class DamagingBehaviour : MonoBehaviour
 {
     [SerializeField] private int damage;
 
+    private PlayerHealth playerHealth;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
-        }
+       playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+       if(playerHealth != null)
+       {
+            playerHealth.TakeDamage(damage);
+       }
     }
 }

@@ -15,7 +15,7 @@ public class PlayerJumpingLeft : IPlayerState
         if (player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerIdle();
         if(input == PlayerInput.MoveRight) return new PlayerJumpingRight(); 
         if(input ==  PlayerInput.None) return new PlayerJumpNoDirection();
-        player.GetComponent<MovementBehaviour>().Move(-1);
+        player.GetComponent<MovementBehaviour>().MoveLeft();
 
         return null;
     }

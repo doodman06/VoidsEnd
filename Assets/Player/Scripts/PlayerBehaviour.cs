@@ -37,6 +37,6 @@ public class PlayerBehaviour : MonoBehaviour
             currentState = newState;
             currentState.Enter(this);
         }
-        Debug.Log(currentState.GetType().Name);
+        //Debug.Log(currentState.GetType().Name);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpingRight : IPlayerState
+public class PlayerMovingRight : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
@@ -12,12 +12,12 @@ public class PlayerJumpingRight : IPlayerState
 
     public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
     {
-        if (player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerIdle();
-        if(input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
-        if(input == PlayerInput.None) return new PlayerJumpNoDirection();
-        player.GetComponent<MovementBehaviour>().Move(1);
-
+        if(input == PlayerInput.Jump && player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerJumping();
+        if(input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
+        if(input == PlayerInput.None) return new PlayerIdle();
+        player.GetComponent<MovementBehaviour>().MoveRight();
         return null;
+
     }
 
     public void Exit(PlayerBehaviour player)
