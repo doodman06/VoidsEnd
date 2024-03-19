@@ -49,6 +49,10 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    public int GetActiveSkillNumber()
+    {
+        return skillCounter[currentSkillIndex];
+    }
 
 
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VortexSkillBehaviour : MonoBehaviour, ISkill
+public class VortexSkill : MonoBehaviour, ISkill
 {
     [SerializeField] private GameObject vortexPrefab;
     private Vector2 vortexPosition;
