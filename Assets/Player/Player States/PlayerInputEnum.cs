@@ -13,4 +13,5 @@ public enum PlayerInput
     Block= 6,
     Dash= 8,
     Skill= 9,
+    MouseClick= 10,
 }

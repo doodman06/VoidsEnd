@@ -12,7 +12,7 @@ public class SkillUIBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        skillCount = currentPlayer.GetComponent<SkillManager>().GetActiveSkillNumber();
-        skillText.text = "Skill: " + skillCount;
+        skillCount = currentPlayer.GetComponent<PlayerBehaviour>().GetActiveSkillNumber();
+        skillText.text = "Current Skill: " + skillCount;
     }
 }

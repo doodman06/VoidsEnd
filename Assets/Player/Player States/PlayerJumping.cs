@@ -12,7 +12,8 @@ public class PlayerJumping : IPlayerState
 
     public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
     {
-        if(player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerIdle();
+        if (input == PlayerInput.Skill) return player.getActiveSkillState();
+        if (player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerIdle();
         if (input == PlayerInput.MoveRight) return new PlayerJumpingRight();
         if (input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
         

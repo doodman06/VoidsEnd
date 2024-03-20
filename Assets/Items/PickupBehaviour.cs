@@ -5,14 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class PickupBehaviour : MonoBehaviour
 {
-    private SkillManager skillManager;
+    private PlayerBehaviour playerBehaviour;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        skillManager = collision.GetComponent<SkillManager>();
-        if (skillManager != null)
+        playerBehaviour = collision.GetComponent<PlayerBehaviour>();
+        if (playerBehaviour != null)
         {
-            skillManager.AddSkill<VortexSkill>(1);
+            playerBehaviour.AddSkill<VortexSkill>(1);
             
             Destroy(gameObject);
         }
