@@ -44,6 +44,11 @@ public class PlayerController : MonoBehaviour
             playerBehaviour.setCurrentInput(PlayerInput.Skill);
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            playerBehaviour.switchSkill();
+        }
+
         //get cursor input
         if (Input.GetMouseButtonDown(0))
         {

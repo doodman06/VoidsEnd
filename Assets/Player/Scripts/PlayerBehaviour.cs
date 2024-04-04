@@ -13,14 +13,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Vector3 mousePos;
 
-    private ISkill[] skills;
+    private Skill[] skills;
 
     private int currentSkillIndex;
 
     private void Start()
     {
         //get all skills from the player
-        skills = gameObject.GetComponents<ISkill>();
+        skills = gameObject.GetComponents<Skill>();
         
         //set the first skill as active
         currentSkillIndex = 0;
@@ -32,6 +32,15 @@ public class PlayerBehaviour : MonoBehaviour
     public void SetActiveSkill(int index)
     {
         currentSkillIndex = index;
+    }
+
+    public void switchSkill()
+    {
+        currentSkillIndex++;
+        if (currentSkillIndex >= skills.Length)
+        {
+            currentSkillIndex = 0;
+        }
     }
 
     public void AddSkill<T>(int amount)

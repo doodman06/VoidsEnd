@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VortexSkill : MonoBehaviour, ISkill
+public class VortexSkill : Skill
 {
     [SerializeField] private GameObject vortexPrefab;
     private Vector2 vortexPosition;
-    [SerializeField] private int skillNumber;
     
 
-    public void UseSkill()
+    public override void UseSkill()
     {
  
         Debug.Log("Vortex skill used");
@@ -35,17 +34,7 @@ public class VortexSkill : MonoBehaviour, ISkill
         
     }
 
-    public void AddUses(int amount)
-    {
-        skillNumber += amount;
-    }
-
-    public int GetUses()
-    {
-        return skillNumber;
-    }
-
-    public IPlayerState GetState()
+    public override IPlayerState GetState()
     {
         return new PlayerUsingVortexSkill();
     }
