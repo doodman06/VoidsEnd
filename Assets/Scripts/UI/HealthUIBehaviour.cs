@@ -8,11 +8,17 @@ public class HealthUIBehaviour : MonoBehaviour
 {
     private int health;
     [SerializeField] private TextMeshProUGUI healthText;
+    private string healthString;
     
     // Update is called once per frame
     void Update()
     {
         health = PlayerHealth.getHealth();
-        healthText.text = "Health: " + health;
+        healthString = "";
+        for(int i = 0; i < health; i++)
+        {
+            healthString += "<sprite=\"Heart\" name=\"Heart\"> ";
+        }
+        healthText.text = healthString;
     }
 }
