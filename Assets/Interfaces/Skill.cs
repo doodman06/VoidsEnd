@@ -17,6 +17,10 @@ public abstract class Skill : MonoBehaviour
     }
 
     public abstract IPlayerState GetState();
-    public abstract void UseSkill();
+    public void UpdateUIInfo()
+    {
+        SkillUIBehaviour.UpdateSkill();
+        Debug.Log("Skill used");
+    }
 
 }

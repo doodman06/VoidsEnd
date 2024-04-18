@@ -8,9 +8,8 @@ public class VortexSkill : Skill
     private Vector2 vortexPosition;
     
 
-    public override void UseSkill()
+    public void UseSkill()
     {
- 
         Debug.Log("Vortex skill used");
         SpawnVortex();
     }
@@ -30,6 +29,7 @@ public class VortexSkill : Skill
             skillNumber--;
             vortexPosition = pos;
             Instantiate(vortexPrefab, vortexPosition, Quaternion.identity);
+            UpdateUIInfo();
         }
         
     }

@@ -41,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             currentSkillIndex = 0;
         }
+        SkillUIBehaviour.UpdateSkill();
     }
 
     public void AddSkill<T>(int amount)
@@ -50,14 +51,29 @@ public class PlayerBehaviour : MonoBehaviour
             if (skills[i].GetType() == typeof(T))
             {
                 skills[i].AddUses(amount);
+                SkillUIBehaviour.UpdateSkill();
                 return;
             }
         }
+        SkillUIBehaviour.UpdateSkill();
     }
 
     public int GetActiveSkillNumber()
     {
         return skills[currentSkillIndex].GetUses();
+    }
+    public SkillEnum GetActiveSkillType()
+    {
+        if (skills[currentSkillIndex].GetType() == typeof(VortexSkill))
+        {
+            return SkillEnum.Vortex;
+        } else if (skills[currentSkillIndex].GetType() == typeof(DashSkill))
+        {
+            return SkillEnum.Dash;
+        } else
+        {
+            return SkillEnum.None;
+        }
     }
 
     public IPlayerState getActiveSkillState()

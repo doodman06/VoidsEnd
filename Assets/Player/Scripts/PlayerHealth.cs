@@ -14,11 +14,17 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        health -= damage;
+        ChangeHealth(-damage);
         if (health <= 0)
         {
             Debug.Log("Player is dead");
         }
+    }
+
+    private void ChangeHealth(int amount)
+    {
+        health += amount;
+        HealthUIBehaviour.UpdateHealth();
     }
 
     public static int getHealth()
