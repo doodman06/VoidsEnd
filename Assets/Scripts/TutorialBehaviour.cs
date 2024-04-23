@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class TutorialBehaviour : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI[] popups;
+    [SerializeField] private string[] popups;
+    [SerializeField] private TextMeshProUGUI popupObject;
     private int currentPopupIndex = 0;
     [SerializeField] private float timeBetweenPopups = 1f;
     private float timeSinceLastPopup = 0f;
@@ -15,7 +16,7 @@ public class TutorialBehaviour : MonoBehaviour
 
     private void Start()
     {
-        popups[0].gameObject.SetActive(true);
+        popupObject.text = popups[currentPopupIndex];
     }
     void Update()
     {
@@ -30,23 +31,62 @@ public class TutorialBehaviour : MonoBehaviour
             }
         }
 
-        if(currentPopupIndex == 0)
+   
+        switch(currentPopupIndex)
         {
-            if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-            {
-                canShowNextPopup = true;
-            }
+            case 0:
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+                {
+                    canShowNextPopup = true;
+                }
+                break;
+            case 1:
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    canShowNextPopup = true;
+                }
+                break;
+            case 2:
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    canShowNextPopup = true;
+                }
+                break;
+            case 3:
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    canShowNextPopup = true;
+                }
+                break;
+            case 4:
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    canShowNextPopup = true;
+                }
+                break;
+            case 5:
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    timeSinceLastPopup = 0;
+                    showNextPopup();
+                    canShowNextPopup = false;
+                }
+                break;
+
+               
+            
         }
-        
+
     }
+
+
 
     public void showNextPopup()
     {
         if (currentPopupIndex + 1 < popups.Length)
         {
-            popups[currentPopupIndex].gameObject.SetActive(false);
             currentPopupIndex++;
-            popups[currentPopupIndex].gameObject.SetActive(true);
+            popupObject.text = popups[currentPopupIndex];
         }
     }
 }
