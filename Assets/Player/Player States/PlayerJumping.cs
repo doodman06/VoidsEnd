@@ -7,6 +7,7 @@ public class PlayerJumping : IPlayerState
     public void Enter(PlayerBehaviour player)
     {
         player.GetComponent<JumpBehaviour>().Jump();
+        player.animator.SetTrigger("Jump");
         return;
     }
 
@@ -16,7 +17,7 @@ public class PlayerJumping : IPlayerState
         if (player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerIdle();
         if (input == PlayerInput.MoveRight) return new PlayerJumpingRight();
         if (input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
-        
+        player.animator.SetTrigger("Jump");
         return null;
     }
 

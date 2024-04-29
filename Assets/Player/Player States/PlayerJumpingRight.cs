@@ -7,6 +7,7 @@ public class PlayerJumpingRight : IPlayerState
     public void Enter(PlayerBehaviour player)
     {
         player.GetComponent<SpriteRenderer>().flipX = false;
+        player.animator.SetTrigger("Jump");
         return;
     }
 
@@ -17,7 +18,7 @@ public class PlayerJumpingRight : IPlayerState
         if(input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
         if(input == PlayerInput.None) return new PlayerJumpNoDirection();
         player.GetComponent<MovementBehaviour>().MoveRight();
-
+        player.animator.SetTrigger("Jump");
         return null;
     }
 

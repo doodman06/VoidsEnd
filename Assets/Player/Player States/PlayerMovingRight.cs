@@ -7,6 +7,7 @@ public class PlayerMovingRight : IPlayerState
     public void Enter(PlayerBehaviour player)
     {
         player.GetComponent<SpriteRenderer>().flipX = false;
+        player.animator.SetTrigger("Run");
         return;
     }
 
@@ -17,6 +18,7 @@ public class PlayerMovingRight : IPlayerState
         if(input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
         if(input == PlayerInput.None) return new PlayerIdle();
         player.GetComponent<MovementBehaviour>().MoveRight();
+        player.animator.SetTrigger("Run");
         return null;
 
     }

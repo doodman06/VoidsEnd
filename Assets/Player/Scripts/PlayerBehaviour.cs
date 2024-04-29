@@ -17,10 +17,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     private int currentSkillIndex;
 
+    public Animator animator;
+
     private void Start()
     {
         //get all skills from the player
         skills = gameObject.GetComponents<Skill>();
+        animator = gameObject.GetComponent<Animator>();
         
         //set the first skill as active
         currentSkillIndex = 0;

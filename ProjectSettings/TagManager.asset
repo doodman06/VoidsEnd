@@ -47,3 +47,6 @@ TagManager:
   - name: Player
     uniqueID: 3200323037
     locked: 0
+  - name: Particle
+    uniqueID: 2108654389
+    locked: 0
