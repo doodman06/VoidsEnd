@@ -19,6 +19,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Animator animator;
 
+    public Rigidbody2D rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void Start()
     {
         //get all skills from the player

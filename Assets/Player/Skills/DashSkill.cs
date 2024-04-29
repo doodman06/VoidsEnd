@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class DashSkill : Skill
 {
-    [SerializeField] private float dashSpeed;
+    [SerializeField] private float dashVelocity;
+    [SerializeField] private float dashTime;
+   
     public void UseSkill()
     {
         Debug.Log("Dash skill used");
@@ -13,8 +15,7 @@ public class DashSkill : Skill
 
     private void Dash()
     {
-        //dash in the direction the player is facing
-        transform.position += transform.right * dashSpeed * Time.deltaTime;
+       
         skillNumber--;
         UpdateUIInfo();
     }
@@ -22,5 +23,14 @@ public class DashSkill : Skill
     public override IPlayerState GetState()
     {
         return new PlayerUsingDashSkill();
+    }
+
+    public float GetDashVelocity()
+    {
+        return dashVelocity;
+    }
+    public float GetDashTime()
+    {
+        return dashTime;
     }
 }
