@@ -8,6 +8,7 @@ public class PickupBehaviour : MonoBehaviour
 {
     private PlayerBehaviour playerBehaviour;
     [SerializeField] private SkillEnum skillEnum;
+    [SerializeField] private AudioClip pickupClip;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,6 +26,11 @@ public class PickupBehaviour : MonoBehaviour
             
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        AudioSource.PlayClipAtPoint(pickupClip, transform.position, SoundManagerBehaviour.getSfxVolume());
     }
     
 }

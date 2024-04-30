@@ -144,3 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillEnum: 0
+  pickupClip: {fileID: 8300000, guid: dc623e69de4187f47a61cdfd63fbb73a, type: 3}

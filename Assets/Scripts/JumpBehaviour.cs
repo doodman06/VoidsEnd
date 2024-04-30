@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class JumpBehaviour : MonoBehaviour
 {
+    [SerializeField] private AudioSource jumpSound;
     [SerializeField] private float jumpForce = 5.0f;
     [SerializeField] private LayerMask jumpableGround;
 
@@ -22,7 +23,15 @@ public class JumpBehaviour : MonoBehaviour
     public void Jump()
     {
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        playJumpSound();
     }
+
+    private void playJumpSound()
+    {
+        jumpSound.volume = SoundManagerBehaviour.getSfxVolume();
+        jumpSound.Play();
+    }
+
 
     public bool IsGrounded()
     {

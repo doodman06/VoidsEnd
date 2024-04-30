@@ -6,6 +6,7 @@ using UnityEngine;
 public class KeyBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject[] doors;
+    [SerializeField] private AudioClip pickupClip;
     private DoorBehaviour[] doorBehaviours;
 
     private void Awake()
@@ -28,6 +29,11 @@ public class KeyBehaviour : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        AudioSource.PlayClipAtPoint(pickupClip, transform.position, SoundManagerBehaviour.getSfxVolume());
     }
  
 }
