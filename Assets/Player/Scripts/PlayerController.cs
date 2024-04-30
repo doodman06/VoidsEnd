@@ -43,6 +43,11 @@ public class PlayerController : MonoBehaviour
             playerBehaviour.switchSkill();
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            OptionsMenuBehaviour.PauseGame();
+        }
+
         //get cursor input
         if (Input.GetMouseButtonDown(0))
         {
