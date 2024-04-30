@@ -6,13 +6,25 @@ using UnityEngine.UI;
 
 public class HealthUIBehaviour : MonoBehaviour
 {
-    private int health;
+    private static int health;
     [SerializeField] private TextMeshProUGUI healthText;
-    
+    private static TextMeshProUGUI healthTextStatic;
+    private static string healthString;
+
     // Update is called once per frame
-    void Update()
+    private void Start()
+    {
+        healthTextStatic = healthText;
+        UpdateHealth();
+    }
+    public static void UpdateHealth()
     {
         health = PlayerHealth.getHealth();
-        healthText.text = "Health: " + health;
+        healthString = "";
+        for (int i = 0; i < health; i++)
+        {
+            healthString += "<sprite=\"Heart\" name=\"Heart\"> ";
+        }
+        healthTextStatic.text = healthString;
     }
 }

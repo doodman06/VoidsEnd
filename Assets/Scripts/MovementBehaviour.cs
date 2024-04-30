@@ -12,10 +12,20 @@ public class MovementBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    public void Move(float direction)
+    private void Move(float direction)
     {
         rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
+    }
+
+    public void MoveRight()
+    {
+        Move(1);
+    }
+
+    public void MoveLeft()
+    {
+        Move(-1);
     }
 
     public void Stop()
