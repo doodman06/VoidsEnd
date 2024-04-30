@@ -2,21 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementBehaviour))]
-[RequireComponent(typeof(JumpBehaviour))]
+
 [RequireComponent(typeof(PlayerBehaviour))]
 public class PlayerController : MonoBehaviour
 {
-    private MovementBehaviour movementBehaviour;
-    private JumpBehaviour jumpBehaviour;
     private PlayerBehaviour playerBehaviour;
     private Vector3 mousePos;
     private void Awake()
     {
-        movementBehaviour = GetComponent<MovementBehaviour>();
-        jumpBehaviour = GetComponent<JumpBehaviour>();
         playerBehaviour = GetComponent<PlayerBehaviour>();
-
     }
 
     private void Update()

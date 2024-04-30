@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 1765071098262701344}
   - component: {fileID: 3225505249285664255}
   - component: {fileID: 2455304127170955199}
+  - component: {fileID: 7530734186923588429}
   - component: {fileID: 2826587899401935696}
   - component: {fileID: 4955892397210934788}
-  - component: {fileID: 7530734186923588429}
   - component: {fileID: 1722721097757209892}
   - component: {fileID: 661080479961313210}
   m_Layer: 0
@@ -236,6 +236,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+--- !u!114 &7530734186923588429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671040274951370923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd008324e788997429e7485a04d548b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillNumber: 5
+  dashVelocity: 25
+  dashTime: 0.1
 --- !u!114 &2826587899401935696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,21 +279,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   rb: {fileID: 0}
---- !u!114 &7530734186923588429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 671040274951370923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd008324e788997429e7485a04d548b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillNumber: 5
-  dashVelocity: 25
-  dashTime: 0.1
 --- !u!95 &1722721097757209892
 Animator:
   serializedVersion: 5

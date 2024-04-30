@@ -13,6 +13,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private Vector3 mousePos;
 
+    private Observer[] observers;
+
     private Skill[] skills;
 
     private int currentSkillIndex;
@@ -24,16 +26,16 @@ public class PlayerBehaviour : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        skills = gameObject.GetComponents<Skill>();
+        animator = gameObject.GetComponent<Animator>();
+        currentSkillIndex = 0;
     }
 
     private void Start()
     {
-        //get all skills from the player
-        skills = gameObject.GetComponents<Skill>();
-        animator = gameObject.GetComponent<Animator>();
+        //get all observer in the scene
+        observers = FindObjectsOfType<Observer>();
         
-        //set the first skill as active
-        currentSkillIndex = 0;
 
         currentState = new PlayerIdle();
         currentState.Enter(this);
@@ -46,6 +48,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void switchSkill()
     {
+        Notify(EventEnum.Switch);
         currentSkillIndex++;
         if (currentSkillIndex >= skills.Length)
         {
@@ -60,6 +63,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             if (skills[i].GetType() == typeof(T))
             {
+                Notify(EventEnum.CollectSkillItem);
                 skills[i].AddUses(amount);
                 SkillUIBehaviour.UpdateSkill();
                 return;
@@ -126,5 +130,13 @@ public class PlayerBehaviour : MonoBehaviour
             currentState.Enter(this);
         }
         //Debug.Log(currentState.GetType().Name);
+    }
+
+    public void Notify(EventEnum currentEvent)
+    {
+        for(int i = 0; i < observers.Length; i++)
+        {
+            observers[i].OnNotify(currentEvent);
+        }
     }
 }

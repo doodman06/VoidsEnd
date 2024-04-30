@@ -6,6 +6,7 @@ public class PlayerMovingRight : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
+        player.Notify(EventEnum.Move);
         player.GetComponent<SpriteRenderer>().flipX = false;
         player.animator.SetTrigger("Run");
         return;

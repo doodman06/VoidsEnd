@@ -6,6 +6,7 @@ public class PlayerJumping : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
+        player.Notify(EventEnum.Jump);
         player.GetComponent<JumpBehaviour>().Jump();
         player.animator.SetTrigger("Jump");
         return;

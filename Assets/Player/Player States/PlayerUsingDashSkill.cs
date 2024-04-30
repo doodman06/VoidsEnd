@@ -10,6 +10,7 @@ public class PlayerUsingDashSkill : IPlayerState
     private DashSkill dashSkill;
     public void Enter(PlayerBehaviour player)
     {
+        player.Notify(EventEnum.Dash);
         dashSkill = player.GetComponent<DashSkill>();
         direction = player.GetComponent<SpriteRenderer>().flipX;
         if (direction) 

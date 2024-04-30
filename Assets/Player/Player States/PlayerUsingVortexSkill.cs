@@ -6,6 +6,7 @@ public class PlayerUsingVortexSkill : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
+        player.Notify(EventEnum.Vortex);
         //slow time
         Time.timeScale = 0.1f;
         return;
@@ -15,6 +16,7 @@ public class PlayerUsingVortexSkill : IPlayerState
     {   
         if (input == PlayerInput.MouseClick)
         {
+            player.Notify(EventEnum.VortexClick);
             player.GetComponent<VortexSkill>().UseSkillAtPosition(player.getMousePos());
             return new PlayerIdle();
 

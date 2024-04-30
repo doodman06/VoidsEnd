@@ -23,12 +23,12 @@ public class PickupBehaviour : MonoBehaviour
             {
                 playerBehaviour.AddSkill<VortexSkill>(1);
             }
-            
+            OnKill();
             Destroy(gameObject);
         }
     }
 
-    private void OnDestroy()
+    private void OnKill()
     {
         AudioSource.PlayClipAtPoint(pickupClip, transform.position, SoundManagerBehaviour.getSfxVolume());
     }

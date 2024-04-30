@@ -7,10 +7,12 @@ public class KeyBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject[] doors;
     [SerializeField] private AudioClip pickupClip;
+    private Observer[] observers;
     private DoorBehaviour[] doorBehaviours;
 
     private void Awake()
     {
+        observers = FindObjectsOfType<Observer>();
         doorBehaviours = new DoorBehaviour[doors.Length];
         for (int i = 0; i < doors.Length; i++)
         {
@@ -27,13 +29,23 @@ public class KeyBehaviour : MonoBehaviour
             {
                 doorBehaviours[i].unlock();
             }
+            Notify(EventEnum.Key);
+            OnKill();
             Destroy(gameObject);
         }
     }
 
-    private void OnDestroy()
+    private void OnKill()
     {
         AudioSource.PlayClipAtPoint(pickupClip, transform.position, SoundManagerBehaviour.getSfxVolume());
+    }
+
+    private void Notify(EventEnum currentEvent)
+    {
+        foreach (Observer observer in observers)
+        {
+            observer.OnNotify(currentEvent);
+        }
     }
  
 }
