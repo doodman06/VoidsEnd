@@ -12,7 +12,7 @@ public class PlayerUsingDashSkill : IPlayerState
     {
         player.Notify(EventEnum.Dash);
         dashSkill = player.GetComponent<DashSkill>();
-        direction = player.GetComponent<SpriteRenderer>().flipX;
+        direction = player.spriteRenderer.flipX;
         if (direction) 
         {
             player.rb.velocity = player.rb.velocity + new Vector2(-dashSkill.GetDashVelocity(), 0);
@@ -37,7 +37,7 @@ public class PlayerUsingDashSkill : IPlayerState
     public void Exit(PlayerBehaviour player)
     {
         dashSkill.UseSkill();
-        player.GetComponent<MovementBehaviour>().Stop();
+        player.movementBehaviour.Stop();
         return;
     }
 }

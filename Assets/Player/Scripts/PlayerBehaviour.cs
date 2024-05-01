@@ -23,9 +23,18 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public MovementBehaviour movementBehaviour;
+
+    public JumpBehaviour jumpBehaviour;
+     
+    public SpriteRenderer spriteRenderer;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        movementBehaviour = GetComponent<MovementBehaviour>();
+        jumpBehaviour = GetComponent<JumpBehaviour>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         skills = gameObject.GetComponents<Skill>();
         animator = gameObject.GetComponent<Animator>();
         currentSkillIndex = 0;

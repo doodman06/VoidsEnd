@@ -7,7 +7,7 @@ public class PlayerMovingRight : IPlayerState
     public void Enter(PlayerBehaviour player)
     {
         player.Notify(EventEnum.Move);
-        player.GetComponent<SpriteRenderer>().flipX = false;
+        player.spriteRenderer.flipX = false;
         player.animator.SetTrigger("Run");
         return;
     }
@@ -15,11 +15,11 @@ public class PlayerMovingRight : IPlayerState
     public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
     {
         if (input == PlayerInput.Skill) return player.getActiveSkillState();
-        if (input == PlayerInput.Jump && player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerJumping();
-        if (!player.GetComponent<JumpBehaviour>().IsGrounded() && player.GetComponent<JumpBehaviour>().IsFalling()) return new PlayerFalling();
+        if (input == PlayerInput.Jump && player.jumpBehaviour.IsGrounded()) return new PlayerJumping();
+        if (!player.jumpBehaviour.IsGrounded() && player.jumpBehaviour.IsFalling()) return new PlayerFalling();
         if (input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
         if(input == PlayerInput.None) return new PlayerIdle();
-        player.GetComponent<MovementBehaviour>().MoveRight();
+        player.movementBehaviour.MoveRight();
         player.animator.SetTrigger("Run");
         return null;
 
@@ -27,7 +27,7 @@ public class PlayerMovingRight : IPlayerState
 
     public void Exit(PlayerBehaviour player)
     {
-        player.GetComponent<MovementBehaviour>().Stop();
+        player.movementBehaviour.Stop();
         return;
     }
 }

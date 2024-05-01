@@ -7,14 +7,14 @@ public class PlayerFalling : IPlayerState
     public void Enter(PlayerBehaviour player)
     {
         player.animator.SetTrigger("Fall");
-        player.GetComponent<JumpBehaviour>().ApplyFallingGravity();
+        player.jumpBehaviour.ApplyFallingGravity();
         return;
     }
 
     public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
     {
         if (input == PlayerInput.Skill) return player.getActiveSkillState();
-        if (player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerIdle();
+        if (player.jumpBehaviour.IsGrounded()) return new PlayerIdle();
         if (input == PlayerInput.MoveRight) return new PlayerFallingRight();
         if (input == PlayerInput.MoveLeft) return new PlayerFallingLeft();
         player.animator.SetTrigger("Fall");
@@ -23,7 +23,7 @@ public class PlayerFalling : IPlayerState
 
     public void Exit(PlayerBehaviour player)
     {
-        player.GetComponent<JumpBehaviour>().ResetGravity();
+        player.jumpBehaviour.ResetGravity();
         return;
     }
 }
