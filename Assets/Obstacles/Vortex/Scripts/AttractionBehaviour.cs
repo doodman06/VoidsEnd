@@ -8,6 +8,7 @@ public class AttractionBehaviour : MonoBehaviour
     private float distance;
     private Vector2 direction;
     private float currentForce;
+    [SerializeField] private float forceMultiplier = 1f;
  
 
     
@@ -26,6 +27,7 @@ public class AttractionBehaviour : MonoBehaviour
         {
             currentForce = maxForce;
         }
+        currentForce *= forceMultiplier;    
       
 
         rb.AddForce(direction.normalized * currentForce );

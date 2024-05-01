@@ -14,7 +14,7 @@ TagManager:
   - Wall
   - Ground
   - Door
-  - 
+  - Background
   - 
   - 
   - 
@@ -38,6 +38,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackgroundTiles
+    uniqueID: 1363948183
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
