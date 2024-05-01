@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
     [SerializeField] protected int skillNumber;
+    [SerializeField] protected AudioSource sfx;
 
     public void AddUses(int amount)
     {
@@ -23,4 +24,9 @@ public abstract class Skill : MonoBehaviour
         Debug.Log("Skill used");
     }
 
+    protected void PlaySFX()
+    {
+        sfx.volume = SoundManagerBehaviour.getSfxVolume();
+        sfx.Play();
+    }
 }

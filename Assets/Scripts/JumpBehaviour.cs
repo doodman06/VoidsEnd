@@ -10,6 +10,7 @@ public class JumpBehaviour : MonoBehaviour
     [SerializeField] private AudioSource jumpSound;
     [SerializeField] private float jumpForce = 5.0f;
     [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private float fallingGravity = 2.5f;
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
@@ -36,6 +37,21 @@ public class JumpBehaviour : MonoBehaviour
     public bool IsGrounded()
     {
         return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+    }
+
+    public bool IsFalling()
+    {
+        return rb.velocity.y < 0;
+    }
+
+    public void ApplyFallingGravity()
+    {
+        rb.gravityScale = fallingGravity;
+    }
+
+    public void ResetGravity()
+    {
+        rb.gravityScale = 1;
     }
    
 }

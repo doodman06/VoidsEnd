@@ -16,7 +16,8 @@ public class PlayerMovingRight : IPlayerState
     {
         if (input == PlayerInput.Skill) return player.getActiveSkillState();
         if (input == PlayerInput.Jump && player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerJumping();
-        if(input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
+        if (!player.GetComponent<JumpBehaviour>().IsGrounded() && player.GetComponent<JumpBehaviour>().IsFalling()) return new PlayerFalling();
+        if (input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
         if(input == PlayerInput.None) return new PlayerIdle();
         player.GetComponent<MovementBehaviour>().MoveRight();
         player.animator.SetTrigger("Run");

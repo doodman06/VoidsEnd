@@ -15,6 +15,7 @@ public class DashSkill : Skill
 
     private void Dash()
     {
+        PlaySFX();
        
         skillNumber--;
         UpdateUIInfo();

@@ -29,6 +29,7 @@ public class VortexSkill : Skill
             skillNumber--;
             vortexPosition = pos;
             Instantiate(vortexPrefab, vortexPosition, Quaternion.identity);
+            PlaySFX();
             UpdateUIInfo();
         }
         

@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumping : IPlayerState
+public class PlayerFalling : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
-        player.Notify(EventEnum.Jump);
-        player.GetComponent<JumpBehaviour>().Jump();
-        player.animator.SetTrigger("Jump");
+        player.animator.SetTrigger("Fall");
+        player.GetComponent<JumpBehaviour>().ApplyFallingGravity();
         return;
     }
 
@@ -16,15 +15,15 @@ public class PlayerJumping : IPlayerState
     {
         if (input == PlayerInput.Skill) return player.getActiveSkillState();
         if (player.GetComponent<JumpBehaviour>().IsGrounded()) return new PlayerIdle();
-        if (player.GetComponent<JumpBehaviour>().IsFalling()) return new PlayerFalling();
-        if (input == PlayerInput.MoveRight) return new PlayerJumpingRight();
-        if (input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
-        player.animator.SetTrigger("Jump");
+        if (input == PlayerInput.MoveRight) return new PlayerFallingRight();
+        if (input == PlayerInput.MoveLeft) return new PlayerFallingLeft();
+        player.animator.SetTrigger("Fall");
         return null;
     }
 
     public void Exit(PlayerBehaviour player)
     {
+        player.GetComponent<JumpBehaviour>().ResetGravity();
         return;
     }
 }
