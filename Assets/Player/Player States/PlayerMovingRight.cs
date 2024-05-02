@@ -8,7 +8,7 @@ public class PlayerMovingRight : IPlayerState
     {
         player.Notify(EventEnum.Move);
         player.spriteRenderer.flipX = false;
-        player.animator.SetTrigger("Run");
+        player.animator.SetTrigger(AnimationStruct.Run);
         return;
     }
 
@@ -20,7 +20,7 @@ public class PlayerMovingRight : IPlayerState
         if (input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
         if(input == PlayerInput.None) return new PlayerIdle();
         player.movementBehaviour.MoveRight();
-        player.animator.SetTrigger("Run");
+        player.animator.SetTrigger(AnimationStruct.Run);
         return null;
 
     }

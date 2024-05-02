@@ -6,7 +6,7 @@ public class PlayerJumpNoDirection : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
-        player.animator.SetTrigger("Jump");
+        player.animator.SetTrigger(AnimationStruct.Jump);
         return;
     }
 
@@ -17,7 +17,7 @@ public class PlayerJumpNoDirection : IPlayerState
         if (player.jumpBehaviour.IsFalling()) return new PlayerFalling();
         if (input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
         if (input == PlayerInput.MoveRight) return new PlayerJumpingRight();
-        player.animator.SetTrigger("Jump");
+        player.animator.SetTrigger(AnimationStruct.Jump);
         return null;
     }
 

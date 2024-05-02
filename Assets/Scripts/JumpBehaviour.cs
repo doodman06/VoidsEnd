@@ -11,6 +11,7 @@ public class JumpBehaviour : MonoBehaviour
     [SerializeField] private float jumpForce = 5.0f;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private float fallingGravity = 2.5f;
+    [SerializeField] private float initialJumpDistance = 0.05f; 
 
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
@@ -23,6 +24,7 @@ public class JumpBehaviour : MonoBehaviour
 
     public void Jump()
     {
+        transform.Translate(Vector2.up * initialJumpDistance);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         playJumpSound();
     }
@@ -36,7 +38,7 @@ public class JumpBehaviour : MonoBehaviour
 
     public bool IsGrounded()
     {
-        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.1f, jumpableGround);
+        return Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, initialJumpDistance, jumpableGround);
     }
 
     public bool IsFalling()

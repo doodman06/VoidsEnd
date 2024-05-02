@@ -8,7 +8,7 @@ public class PlayerJumping : IPlayerState
     {
         player.Notify(EventEnum.Jump);
         player.jumpBehaviour.Jump();
-        player.animator.SetTrigger("Jump");
+        player.animator.SetTrigger(AnimationStruct.Jump);
         return;
     }
 
@@ -19,7 +19,7 @@ public class PlayerJumping : IPlayerState
         if (player.jumpBehaviour.IsFalling()) return new PlayerFalling();
         if (input == PlayerInput.MoveRight) return new PlayerJumpingRight();
         if (input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
-        player.animator.SetTrigger("Jump");
+        player.animator.SetTrigger(AnimationStruct.Jump);
         return null;
     }
 

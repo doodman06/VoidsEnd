@@ -6,7 +6,7 @@ public class PlayerFalling : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
-        player.animator.SetTrigger("Fall");
+        player.animator.SetTrigger(AnimationStruct.Fall);
         player.jumpBehaviour.ApplyFallingGravity();
         return;
     }
@@ -17,7 +17,7 @@ public class PlayerFalling : IPlayerState
         if (player.jumpBehaviour.IsGrounded()) return new PlayerIdle();
         if (input == PlayerInput.MoveRight) return new PlayerFallingRight();
         if (input == PlayerInput.MoveLeft) return new PlayerFallingLeft();
-        player.animator.SetTrigger("Fall");
+        player.animator.SetTrigger(AnimationStruct.Fall);
         return null;
     }
 

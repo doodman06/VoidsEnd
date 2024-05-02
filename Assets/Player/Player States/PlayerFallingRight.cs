@@ -7,7 +7,7 @@ public class PlayerFallingRight : IPlayerState
     public void Enter(PlayerBehaviour player)
     {
         player.spriteRenderer.flipX = false;
-        player.animator.SetTrigger("Fall");
+        player.animator.SetTrigger(AnimationStruct.Fall);
         player.jumpBehaviour.ApplyFallingGravity();
         return;
     }
@@ -19,7 +19,7 @@ public class PlayerFallingRight : IPlayerState
         if (input == PlayerInput.MoveLeft) return new PlayerFallingLeft();
         if (input == PlayerInput.None) return new PlayerFalling();
         player.movementBehaviour.MoveRight();
-        player.animator.SetTrigger("Fall");
+        player.animator.SetTrigger(AnimationStruct.Fall);
         return null;
     }
 

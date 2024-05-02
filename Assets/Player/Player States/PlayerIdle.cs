@@ -6,7 +6,7 @@ public class PlayerIdle : IPlayerState
 {
     public void Enter(PlayerBehaviour player)
     {
-        player.animator.SetTrigger("Idle");
+        player.animator.SetTrigger(AnimationStruct.Idle);
         return;
     }
 
@@ -17,7 +17,7 @@ public class PlayerIdle : IPlayerState
         if(!player.jumpBehaviour.IsGrounded()) return new PlayerJumpNoDirection();
         if (input == PlayerInput.MoveRight) return new PlayerMovingRight();
         if (input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
-        player.animator.SetTrigger("Idle");
+        player.animator.SetTrigger(AnimationStruct.Idle);
         return null;
     }
 

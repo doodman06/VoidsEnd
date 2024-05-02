@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health = maxHealth;
         animator = GetComponent<Animator>();
+        //Time.timeScale = 0.1f;
     }
 
     public void TakeDamage(int damage)
@@ -39,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        animator.SetTrigger("Death");
+        animator.SetTrigger(AnimationStruct.Death);
         deathSound.volume = SoundManagerBehaviour.getSfxVolume();
         deathSound.Play();
     }

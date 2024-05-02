@@ -7,7 +7,7 @@ public class PlayerJumpingRight : IPlayerState
     public void Enter(PlayerBehaviour player)
     {
         player.spriteRenderer.flipX = false;
-        player.animator.SetTrigger("Jump");
+        player.animator.SetTrigger(AnimationStruct.Jump);
         return;
     }
 
@@ -19,7 +19,7 @@ public class PlayerJumpingRight : IPlayerState
         if(input == PlayerInput.MoveLeft) return new PlayerJumpingLeft();
         if(input == PlayerInput.None) return new PlayerJumpNoDirection();
         player.movementBehaviour.MoveRight();
-        player.animator.SetTrigger("Jump");
+        player.animator.SetTrigger(AnimationStruct.Jump);
         return null;
     }
 
