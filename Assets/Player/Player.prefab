@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd008324e788997429e7485a04d548b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillNumber: 1
+  skillNumber: 3
   sfx: {fileID: 4902154001513099998}
   dashVelocity: 25
   dashTime: 0.1
@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ca886029ca668419fadb1cac4c40c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  rb: {fileID: 0}
+  animator: {fileID: 1722721097757209892}
+  rb: {fileID: 8406820353976909986}
   movementBehaviour: {fileID: 0}
   jumpBehaviour: {fileID: 0}
   spriteRenderer: {fileID: 0}
@@ -747,7 +747,19 @@ MonoBehaviour:
     m_ActionId: e203f360-26f4-4d4b-8b36-022be2b17af0
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6048448924656663855}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnUseSkill
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 448a88de-ce73-4afc-a5d3-ef7777e0ed81
     m_ActionName: Player/UseSkill[/Keyboard/e]
   - m_PersistentCalls:

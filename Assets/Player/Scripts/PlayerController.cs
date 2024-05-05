@@ -21,9 +21,7 @@ public class PlayerController : MonoBehaviour
     {
         playerBehaviour = GetComponent<PlayerBehaviour>();
         playerInput = GetComponent<PlayerInput>();
-        
-       
-        
+        LoadActions();
     }
 
     private void Start()
@@ -34,8 +32,8 @@ public class PlayerController : MonoBehaviour
         useSKillAction = playerInput.actions.FindAction("UseSkill");
         switchSkillAction = playerInput.actions.FindAction("SwitchSkill");
         mouseClickAction = playerInput.actions.FindAction("MouseClick");
-        LoadActions();
     }
+
 
     private void LoadActions()
     {
@@ -50,6 +48,14 @@ public class PlayerController : MonoBehaviour
     public void OnEscape(InputAction.CallbackContext context)
     {
         OptionsMenuBehaviour.PauseGame();
+    }
+
+    public void OnUseSkill(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            playerBehaviour.setCurrentInput(PlayerInputEnum.Skill);
+        }
     }
 
     private void Update()
@@ -72,10 +78,7 @@ public class PlayerController : MonoBehaviour
             playerBehaviour.setCurrentInput(PlayerInputEnum.Jump);
         }
 
-        if (useSKillAction.IsPressed())
-        {
-            playerBehaviour.setCurrentInput(PlayerInputEnum.Skill);
-        }
+        
 
        
 

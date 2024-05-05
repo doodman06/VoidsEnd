@@ -32,51 +32,6 @@ public class TutorialBehaviour : Observer
         }
 
 
-       /* switch (currentPopupIndex)
-        {
-            case 0:
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
-                {
-                    canShowNextPopup = true;
-                }
-                break;
-            case 1:
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    canShowNextPopup = true;
-                }
-                break;
-            case 2:
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    canShowNextPopup = true;
-                }
-                break;
-            case 3:
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    canShowNextPopup = true;
-                }
-                break;
-            case 4:
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    canShowNextPopup = true;
-                }
-                break;
-            case 5:
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    timeSinceLastPopup = 0;
-                    showNextPopup();
-                    canShowNextPopup = false;
-                }
-                break;
-
-
-
-        }*/
-
     }
 
 

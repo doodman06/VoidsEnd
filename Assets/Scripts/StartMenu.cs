@@ -16,6 +16,8 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI moveRightButtonText;
     [SerializeField] private TextMeshProUGUI skillButtonText;
     [SerializeField] private TextMeshProUGUI switchSkillButtonText;
+    [SerializeField] private TextMeshProUGUI escapeButtonText;
+    [SerializeField] private TextMeshProUGUI interactButtonText;
     [SerializeField] private GameObject masterVolumeSlider;
     [SerializeField] private GameObject sfxVolumeSlider;
     [SerializeField] private GameObject bgmVolumeSlider;
@@ -31,6 +33,7 @@ public class StartMenu : MonoBehaviour
     private InputAction switchSkillAction;
     private InputAction mouseClickAction;
     private InputAction escapeAction;
+    private InputAction interactAction;
 
     private void Start()
     {
@@ -45,6 +48,7 @@ public class StartMenu : MonoBehaviour
         switchSkillAction = playerInput.actions.FindAction("SwitchSkill");
         mouseClickAction = playerInput.actions.FindAction("MouseClick");
         escapeAction = playerInput.actions.FindAction("Escape");
+        interactAction = playerInput.actions.FindAction("Interact");
         LoadActions();
     
         DisableAllActions();
@@ -61,6 +65,7 @@ public class StartMenu : MonoBehaviour
         switchSkillAction.Enable();
         mouseClickAction.Enable();
         escapeAction.Enable();
+        interactAction.Enable();
     }
 
     public void DisableAllActions()
@@ -72,6 +77,7 @@ public class StartMenu : MonoBehaviour
         switchSkillAction.Disable();
         mouseClickAction.Disable();
         escapeAction.Disable();
+        interactAction.Disable();
     }
 
     public void StartGame()
@@ -169,6 +175,12 @@ public class StartMenu : MonoBehaviour
             case "SwitchSkill":
                 actionToRebind = switchSkillAction;
                 break;
+            case "Escape":
+                actionToRebind = escapeAction;
+                break;
+            case "Interact":
+                actionToRebind = interactAction;
+                break;
         }
 
         var rebindOperation = actionToRebind.PerformInteractiveRebinding()
@@ -189,7 +201,10 @@ public class StartMenu : MonoBehaviour
         moveLeftButtonText.text = moveLeftAction.GetBindingDisplayString(0);
         moveRightButtonText.text = moveRightAction.GetBindingDisplayString(0);
         skillButtonText.text = useSKillAction.GetBindingDisplayString(0);
+        skillButtonText.text = skillButtonText.text.Split(' ')[1];
         switchSkillButtonText.text = switchSkillAction.GetBindingDisplayString(0);
+        escapeButtonText.text = escapeAction.GetBindingDisplayString(0);
+        interactButtonText.text = interactAction.GetBindingDisplayString(0);
 
         
     }

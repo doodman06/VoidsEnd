@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000dd0dc1bec5a64e133583af7d97324c51
+  m_ApplyToSortingLayers: 00000000dd0dc1bec5a64e133583af7d97324c5105036572
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -388,16 +388,6 @@ GameObject:
 --- !u!82 &1184807688 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 661080479961313210, guid: 542951037f8f74d4a81d3383a9c593b5, type: 3}
-  m_PrefabInstance: {fileID: 8297554727944401954}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1184807689 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1722721097757209892, guid: 542951037f8f74d4a81d3383a9c593b5, type: 3}
-  m_PrefabInstance: {fileID: 8297554727944401954}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1184807698 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 8406820353976909986, guid: 542951037f8f74d4a81d3383a9c593b5, type: 3}
   m_PrefabInstance: {fileID: 8297554727944401954}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1360807382
@@ -41166,14 +41156,6 @@ PrefabInstance:
       propertyPath: skillNumber
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4955892397210934788, guid: 542951037f8f74d4a81d3383a9c593b5, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 1184807698}
-    - target: {fileID: 4955892397210934788, guid: 542951037f8f74d4a81d3383a9c593b5, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1184807689}
     - target: {fileID: 7469005179969194065, guid: 542951037f8f74d4a81d3383a9c593b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.72
