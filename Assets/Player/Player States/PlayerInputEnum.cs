@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerInput
+public enum PlayerInputEnum
 {
     None = 0,
     Jump = 1,
@@ -14,4 +14,5 @@ public enum PlayerInput
     Dash= 8,
     Skill= 9,
     MouseClick= 10,
+    SwitchSkill = 11,
 }

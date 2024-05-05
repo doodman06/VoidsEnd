@@ -3,28 +3,81 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class StartMenu : MonoBehaviour
 {
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject levelSelectorPanel;
+    [SerializeField] private GameObject controlsPanel;
+    [SerializeField] private TextMeshProUGUI jumpButtonText;
+    [SerializeField] private TextMeshProUGUI moveLeftButtonText;
+    [SerializeField] private TextMeshProUGUI moveRightButtonText;
+    [SerializeField] private TextMeshProUGUI skillButtonText;
+    [SerializeField] private TextMeshProUGUI switchSkillButtonText;
     [SerializeField] private GameObject masterVolumeSlider;
     [SerializeField] private GameObject sfxVolumeSlider;
     [SerializeField] private GameObject bgmVolumeSlider;
     private Slider masterVolumeSliderComponent;
     private Slider sfxVolumeSliderComponent;
     private Slider bgmVolumeSliderComponent;
+    private PlayerInput playerInput;
+
+    private InputAction moveLeftAction;
+    private InputAction moveRightAction;
+    private InputAction jumpAction;
+    private InputAction useSKillAction;
+    private InputAction switchSkillAction;
+    private InputAction mouseClickAction;
+    private InputAction escapeAction;
 
     private void Start()
     {
         masterVolumeSliderComponent = masterVolumeSlider.GetComponent<Slider>();
         sfxVolumeSliderComponent = sfxVolumeSlider.GetComponent<Slider>();
         bgmVolumeSliderComponent = bgmVolumeSlider.GetComponent<Slider>();
+        playerInput = GetComponent<PlayerInput>();
+        moveLeftAction = playerInput.actions.FindAction("MoveLeft");
+        moveRightAction = playerInput.actions.FindAction("MoveRight");
+        jumpAction = playerInput.actions.FindAction("Jump");
+        useSKillAction = playerInput.actions.FindAction("UseSkill");
+        switchSkillAction = playerInput.actions.FindAction("SwitchSkill");
+        mouseClickAction = playerInput.actions.FindAction("MouseClick");
+        escapeAction = playerInput.actions.FindAction("Escape");
+        LoadActions();
+    
+        DisableAllActions();
+        UpdateControlsUI();
+
+    }
+
+    public void EnableAllActions()
+    {
+        moveLeftAction.Enable();
+        moveRightAction.Enable();
+        jumpAction.Enable();
+        useSKillAction.Enable();
+        switchSkillAction.Enable();
+        mouseClickAction.Enable();
+        escapeAction.Enable();
+    }
+
+    public void DisableAllActions()
+    {
+        moveLeftAction.Disable();
+        moveRightAction.Disable();
+        jumpAction.Disable();
+        useSKillAction.Disable();
+        switchSkillAction.Disable();
+        mouseClickAction.Disable();
+        escapeAction.Disable();
     }
 
     public void StartGame()
     {
         //start the game
+        EnableAllActions();
         Debug.Log("Game started");
         SceneManager.LoadScene("Level1");
     }
@@ -46,6 +99,7 @@ public class StartMenu : MonoBehaviour
     public void LoadLevel(string levelName)
     {
         //load the level
+        EnableAllActions();
         Debug.Log("Level loaded: " + levelName);
         SceneManager.LoadScene(levelName);
     }
@@ -81,6 +135,81 @@ public class StartMenu : MonoBehaviour
         optionsPanel.SetActive(false);
     }
 
+    public void OpenControls()
+    {
+        //open controls menu
+        Debug.Log("Controls menu opened");
+        controlsPanel.SetActive(true);
+    }
+
+    public void CloseControls()
+    {
+        //close controls menu
+        Debug.Log("Controls menu closed");
+        controlsPanel.SetActive(false);
+    }
+
+    public void RemapButtonClicked(string currentInput)
+    {
+        var actionToRebind = jumpAction;
+        switch(currentInput)
+        {
+            case "Jump":
+                actionToRebind = jumpAction;
+                break;
+            case "MoveLeft":
+                actionToRebind = moveLeftAction;
+                break;
+            case "MoveRight":
+                actionToRebind = moveRightAction;
+                break;
+            case "Skill":
+                actionToRebind = useSKillAction;
+                break;
+            case "SwitchSkill":
+                actionToRebind = switchSkillAction;
+                break;
+        }
+
+        var rebindOperation = actionToRebind.PerformInteractiveRebinding()
+                    // To avoid accidental input from mouse motion
+                    .WithControlsExcluding("Mouse")
+                    .OnMatchWaitForAnother(0.1f)
+                    .Start();
+        rebindOperation.OnComplete(operation =>
+        {
+            UpdateControlsUI();
+            SaveActions();
+        });
+    }
+
+    public void UpdateControlsUI()
+    {
+        jumpButtonText.text = jumpAction.GetBindingDisplayString(0);
+        moveLeftButtonText.text = moveLeftAction.GetBindingDisplayString(0);
+        moveRightButtonText.text = moveRightAction.GetBindingDisplayString(0);
+        skillButtonText.text = useSKillAction.GetBindingDisplayString(0);
+        switchSkillButtonText.text = switchSkillAction.GetBindingDisplayString(0);
+
+        
+    }
+    public void SaveActions()
+    {
+        var rebinds = playerInput.actions.SaveBindingOverridesAsJson();
+        PlayerPrefs.SetString("ControlBindings", rebinds);
+    }
+
+    public void LoadActions()
+    {
+        playerInput.actions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("ControlBindings"));
+    }
+
+    public void ResetControls()
+    {
+        PlayerPrefs.DeleteKey("ControlBindings");
+        LoadActions();
+        UpdateControlsUI();
+    }
     public void MasterVolumeUpdate(float val)
     {
         //update master volume

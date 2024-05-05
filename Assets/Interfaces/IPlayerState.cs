@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IPlayerState
 {
-    public IPlayerState Tick(PlayerBehaviour playerBehaviour, PlayerInput input);
+    public IPlayerState Tick(PlayerBehaviour playerBehaviour, PlayerInputEnum input);
     public void Enter(PlayerBehaviour playerBehaviour);
     public void Exit(PlayerBehaviour playerBehaviour);
 }

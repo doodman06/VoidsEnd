@@ -12,9 +12,9 @@ public class PlayerUsingVortexSkill : IPlayerState
         return;
     }
 
-    public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
+    public IPlayerState Tick(PlayerBehaviour player, PlayerInputEnum input)
     {   
-        if (input == PlayerInput.MouseClick)
+        if (input == PlayerInputEnum.MouseClick)
         {
             player.Notify(EventEnum.VortexClick);
             player.GetComponent<VortexSkill>().UseSkillAtPosition(player.getMousePos());

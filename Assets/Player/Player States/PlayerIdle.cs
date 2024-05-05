@@ -10,13 +10,13 @@ public class PlayerIdle : IPlayerState
         return;
     }
 
-    public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
+    public IPlayerState Tick(PlayerBehaviour player, PlayerInputEnum input)
     {
-        if(input == PlayerInput.Skill) return player.getActiveSkillState();
-        if(input == PlayerInput.Jump && player.jumpBehaviour.IsGrounded()) return new PlayerJumping();
+        if(input == PlayerInputEnum.Skill) return player.getActiveSkillState();
+        if(input == PlayerInputEnum.Jump && player.jumpBehaviour.IsGrounded()) return new PlayerJumping();
         if(!player.jumpBehaviour.IsGrounded()) return new PlayerJumpNoDirection();
-        if (input == PlayerInput.MoveRight) return new PlayerMovingRight();
-        if (input == PlayerInput.MoveLeft) return new PlayerMovingLeft();
+        if (input == PlayerInputEnum.MoveRight) return new PlayerMovingRight();
+        if (input == PlayerInputEnum.MoveLeft) return new PlayerMovingLeft();
         player.animator.SetTrigger(AnimationStruct.Idle);
         return null;
     }

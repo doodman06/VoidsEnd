@@ -11,12 +11,12 @@ public class PlayerFalling : IPlayerState
         return;
     }
 
-    public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
+    public IPlayerState Tick(PlayerBehaviour player, PlayerInputEnum input)
     {
-        if (input == PlayerInput.Skill) return player.getActiveSkillState();
+        if (input == PlayerInputEnum.Skill) return player.getActiveSkillState();
         if (player.jumpBehaviour.IsGrounded()) return new PlayerIdle();
-        if (input == PlayerInput.MoveRight) return new PlayerFallingRight();
-        if (input == PlayerInput.MoveLeft) return new PlayerFallingLeft();
+        if (input == PlayerInputEnum.MoveRight) return new PlayerFallingRight();
+        if (input == PlayerInputEnum.MoveLeft) return new PlayerFallingLeft();
         player.animator.SetTrigger(AnimationStruct.Fall);
         return null;
     }

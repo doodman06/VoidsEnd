@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(PlayerBehaviour))]
@@ -8,53 +9,85 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerBehaviour playerBehaviour;
     private Vector3 mousePos;
+    private PlayerInput playerInput;
+
+    private InputAction moveLeftAction;
+    private InputAction moveRightAction;
+    private InputAction jumpAction;
+    private InputAction useSKillAction;
+    private InputAction switchSkillAction;
+    private InputAction mouseClickAction;
     private void Awake()
     {
         playerBehaviour = GetComponent<PlayerBehaviour>();
+        playerInput = GetComponent<PlayerInput>();
+        
+       
+        
+    }
+
+    private void Start()
+    {
+        moveLeftAction = playerInput.actions.FindAction("MoveLeft");
+        moveRightAction = playerInput.actions.FindAction("MoveRight");
+        jumpAction = playerInput.actions.FindAction("Jump");
+        useSKillAction = playerInput.actions.FindAction("UseSkill");
+        switchSkillAction = playerInput.actions.FindAction("SwitchSkill");
+        mouseClickAction = playerInput.actions.FindAction("MouseClick");
+        LoadActions();
+    }
+
+    private void LoadActions()
+    {
+        playerInput.actions.LoadBindingOverridesFromJson(PlayerPrefs.GetString("ControlBindings"));
+    }
+
+    public void OnSwitchSkill(InputAction.CallbackContext context)
+    {
+        playerBehaviour.switchSkill();
+    }
+
+    public void OnEscape(InputAction.CallbackContext context)
+    {
+        OptionsMenuBehaviour.PauseGame();
     }
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (moveRightAction.IsPressed())
         {
-            playerBehaviour.setCurrentInput(PlayerInput.MoveRight);
+            playerBehaviour.setCurrentInput(PlayerInputEnum.MoveRight);
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (moveLeftAction.IsPressed())
         {
-            playerBehaviour.setCurrentInput(PlayerInput.MoveLeft);
+            playerBehaviour.setCurrentInput(PlayerInputEnum.MoveLeft);
         }
         else
         {
-            playerBehaviour.setCurrentInput(PlayerInput.None);
+            playerBehaviour.setCurrentInput(PlayerInputEnum.None);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (jumpAction.IsPressed())
         {
-            playerBehaviour.setCurrentInput(PlayerInput.Jump);
+            playerBehaviour.setCurrentInput(PlayerInputEnum.Jump);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (useSKillAction.IsPressed())
         {
-            playerBehaviour.setCurrentInput(PlayerInput.Skill);
+            playerBehaviour.setCurrentInput(PlayerInputEnum.Skill);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            playerBehaviour.switchSkill();
-        }
+       
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OptionsMenuBehaviour.PauseGame();
-        }
+        
 
         //get cursor input
-        if (Input.GetMouseButtonDown(0))
+        if (mouseClickAction.IsPressed())
         {
             //get mouse position
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             playerBehaviour.setMousePos(mousePos);
-            playerBehaviour.setCurrentInput(PlayerInput.MouseClick);
+            playerBehaviour.setCurrentInput(PlayerInputEnum.MouseClick);
             
 
         }

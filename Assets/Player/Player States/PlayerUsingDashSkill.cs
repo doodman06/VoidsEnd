@@ -26,7 +26,7 @@ public class PlayerUsingDashSkill : IPlayerState
         return;
     }
 
-    public IPlayerState Tick(PlayerBehaviour player, PlayerInput input)
+    public IPlayerState Tick(PlayerBehaviour player, PlayerInputEnum input)
     {
         time += Time.deltaTime;
         if (time >= timeToDash) return new PlayerIdle();

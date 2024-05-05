@@ -9,7 +9,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private IPlayerState newState;
 
-    private PlayerInput currentInput;
+    private PlayerInputEnum currentInput;
 
     private Vector3 mousePos;
 
@@ -107,7 +107,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
         return null;
     }
-    public void setCurrentInput(PlayerInput input)
+    public void setCurrentInput(PlayerInputEnum input)
     {
         currentInput = input;
         UpdateState(currentInput);
@@ -128,7 +128,7 @@ public class PlayerBehaviour : MonoBehaviour
         UpdateState(currentInput);
     }*/
 
-    public void UpdateState(PlayerInput input)
+    public void UpdateState(PlayerInputEnum input)
     {
         newState = currentState.Tick(this, currentInput);
 
