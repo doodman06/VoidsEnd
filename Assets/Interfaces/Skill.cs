@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public abstract class Skill : MonoBehaviour
 {
     [SerializeField] protected int skillNumber;
     [SerializeField] protected AudioSource sfx;
+    [SerializeField] protected TrailRenderer trailRenderer;
 
     public void AddUses(int amount)
     {
@@ -28,5 +30,10 @@ public abstract class Skill : MonoBehaviour
     {
         sfx.volume = SoundManagerBehaviour.getSfxVolume();
         sfx.Play();
+    }
+
+    protected void StartEmitting()
+    {
+        trailRenderer.emitting = true;
     }
 }
