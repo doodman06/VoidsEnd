@@ -54512,8 +54512,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -54548,7 +54548,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1.7633057, w: -0.16397095}
+  m_margin: {x: -195.71094, y: 0, z: -218.3501, w: -0.16397095}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -54578,7 +54578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: 111}
+  m_AnchoredPosition: {x: 28, y: 286}
   m_SizeDelta: {x: 534.6949, y: 122.1647}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2882967179070694815
@@ -55042,26 +55042,6 @@ PrefabInstance:
     - target: {fileID: 4026575901007854247, guid: 9e9dac75d85df904f97c093d84dba220, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4538976821103849875, guid: 9e9dac75d85df904f97c093d84dba220, type: 3}
-      propertyPath: m_fontSize
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4538976821103849875, guid: 9e9dac75d85df904f97c093d84dba220, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 740c1383b47b738448fbd7b9f149cc52, type: 2}
-    - target: {fileID: 4538976821103849875, guid: 9e9dac75d85df904f97c093d84dba220, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4538976821103849875, guid: 9e9dac75d85df904f97c093d84dba220, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2291467537922970033, guid: 740c1383b47b738448fbd7b9f149cc52, type: 2}
-    - target: {fileID: 4538976821103849875, guid: 9e9dac75d85df904f97c093d84dba220, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

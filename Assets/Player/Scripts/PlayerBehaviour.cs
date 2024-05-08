@@ -109,6 +109,11 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    public bool IsActiveSkillUsable()
+    {
+        return skills[currentSkillIndex].GetUses() > 0;
+    }
+
     public void setCurrentInput(PlayerInputEnum input)
     {
         currentInput = input;
