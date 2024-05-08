@@ -122,7 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void UpdateState(PlayerInputEnum input)
     {
-        newState = currentState.Tick(this, currentInput);
+        newState = currentState.Tick(this, input);
 
         if(newState != null)
         {
