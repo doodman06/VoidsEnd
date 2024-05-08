@@ -14,35 +14,17 @@ public class VortexSkill : Skill
         player = GetComponent<PlayerBehaviour>();
     }
 
-
-    public void UseSkill()
-    {
-        Debug.Log("Vortex skill used");
-        SpawnVortex();
-    }
-
-    private void SpawnVortex()
-    {
-        vortexPosition = transform.position;
-        //spawn a vortex
-        Instantiate(vortexPrefab, vortexPosition, Quaternion.identity);
-
-    }
-
     public void UseSkillAtPosition(Vector2 pos)
     {
         if(skillNumber > 0)
         {
-            skillNumber--;
+            UseSkill();
             vortexPosition = pos;
             Instantiate(vortexPrefab, vortexPosition, Quaternion.identity);
-            PlaySFX();
-            UpdateUIInfo();
+            
         }
-        
     }
 
-   
     public override void StartSkill()
     {
         Debug.Log("Vortex skill started");

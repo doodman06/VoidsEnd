@@ -34,4 +34,11 @@ public abstract class Skill : MonoBehaviour
         sfx.volume = SoundManagerBehaviour.getSfxVolume();
         sfx.Play();
     }
+
+    protected void UseSkill()
+    {
+        skillNumber--;
+        UpdateUIInfo();
+        PlaySFX();
+    }
 }

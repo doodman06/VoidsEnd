@@ -22,19 +22,13 @@ public class DashSkill : Skill
         mb = GetComponent<MovementBehaviour>();
     }
 
-    public void UseSkill()
+    public void UseDash()
     {
+        UseSkill();
         Debug.Log("Dash skill used");
-        Dash();
+        
     }
 
-    private void Dash()
-    {
-        PlaySFX();
-       
-        skillNumber--;
-        UpdateUIInfo();
-    }
 
     public override void StartSkill()
     {
@@ -54,7 +48,7 @@ public class DashSkill : Skill
     public override void EndSkill()
     {
         Debug.Log("Dash skill ended");
-        UseSkill();
+        UseDash();
         mb.Stop();
 
     }
