@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 124852359502193291}
         m_TargetAssemblyTypeName: OptionsMenuBehaviour, Assembly-CSharp
         m_MethodName: ReturnToTitle
         m_Mode: 1
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 124852359502193291}
         m_TargetAssemblyTypeName: OptionsMenuBehaviour, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1

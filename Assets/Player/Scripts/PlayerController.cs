@@ -59,6 +59,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            playerBehaviour.setCurrentInput(PlayerInputEnum.Jump);
+        }
+    }
+
     private void Update()
     {
         if (moveRightAction.IsPressed())
@@ -74,16 +82,12 @@ public class PlayerController : MonoBehaviour
             playerBehaviour.setCurrentInput(PlayerInputEnum.None);
         }
 
-        if (jumpAction.IsPressed())
-        {
-            playerBehaviour.setCurrentInput(PlayerInputEnum.Jump);
-        }
-
-        
-
        
 
-        
+
+
+
+
 
         //get cursor input
         if (mouseClickAction.IsPressed())

@@ -743,7 +743,19 @@ MonoBehaviour:
     m_ActionId: 63ff97f0-8f07-4e7b-8a43-df0a4ab32dd5
     m_ActionName: Player/MoveRight[/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6048448924656663855}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e203f360-26f4-4d4b-8b36-022be2b17af0
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -838,6 +850,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9a1e61c8-ea28-4c7e-9879-f4eef21a7303
     m_ActionName: Player/Escape[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: eb677eef-ac6b-486c-95a8-98ee906a3837
+    m_ActionName: Player/Interact[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
