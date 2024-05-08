@@ -29,7 +29,6 @@ public class DashSkill : Skill
         
     }
 
-
     public override void StartSkill()
     {
         Debug.Log("Dash skill started");
@@ -68,12 +67,11 @@ public class DashSkill : Skill
                 
     }
 
-   
-
     public float GetDashVelocity()
     {
         return dashVelocity;
     }
+
     public float GetDashTime()
     {
         return dashTime;
