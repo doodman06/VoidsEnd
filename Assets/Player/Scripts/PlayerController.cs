@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 
 [RequireComponent(typeof(PlayerBehaviour))]
+[RequireComponent(typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
     private PlayerBehaviour playerBehaviour;

@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(PlayerInput))]
 public class DoorBehaviour : MonoBehaviour
 {
     [SerializeField] private bool isLocked = true;

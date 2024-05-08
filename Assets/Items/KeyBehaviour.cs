@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class KeyBehaviour : MonoBehaviour
 {
     [SerializeField] private GameObject[] doors;

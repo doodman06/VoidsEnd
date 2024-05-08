@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(MovementBehaviour))]
+[RequireComponent(typeof(JumpBehaviour))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class PlayerBehaviour : MonoBehaviour
 {
     private IPlayerState currentState;

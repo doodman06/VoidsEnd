@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerBehaviour))]
 public class VortexSkill : Skill
 {
     [SerializeField] private GameObject vortexPrefab;
