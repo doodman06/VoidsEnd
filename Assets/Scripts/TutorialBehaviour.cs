@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TutorialBehaviour : Observer
 {
     [SerializeField] private string[] popups;
     [SerializeField] private TextMeshProUGUI popupObject;
+    [SerializeField] private InputActionAsset inputActionAsset;
     private int currentPopupIndex = 0;
     [SerializeField] private float timeBetweenPopups = 1f;
     private float timeSinceLastPopup = 0f;
@@ -16,6 +18,7 @@ public class TutorialBehaviour : Observer
 
     private void Start()
     {
+        ReplaceBindsInPopups();
         popupObject.text = popups[currentPopupIndex];
     }
     void Update()
@@ -32,6 +35,37 @@ public class TutorialBehaviour : Observer
         }
 
 
+    }
+
+    private void ReplaceBindsInPopups()
+    {
+        for (int i = 0; i < popups.Length; i++)
+        {
+            if (popups[i].Contains("MOVELEFT"))
+            {
+                popups[i] = popups[i].Replace("MOVELEFT", inputActionAsset.FindAction("MoveLeft").GetBindingDisplayString(0));
+            }
+            if (popups[i].Contains("MOVERIGHT"))
+            {
+                popups[i] = popups[i].Replace("MOVERIGHT", inputActionAsset.FindAction("MoveRight").GetBindingDisplayString(0));
+            }
+            if (popups[i].Contains("JUMP"))
+            {
+                popups[i] = popups[i].Replace("JUMP", inputActionAsset.FindAction("Jump").GetBindingDisplayString(0));
+            }
+            if (popups[i].Contains("SKILL"))
+            {
+                popups[i] = popups[i].Replace("SKILL", inputActionAsset.FindAction("UseSkill").GetBindingDisplayString(0));
+            }
+            if (popups[i].Contains("SWITCH"))
+            {
+                popups[i] = popups[i].Replace("SWITCH", inputActionAsset.FindAction("SwitchSkill").GetBindingDisplayString(0));
+            }
+            if (popups[i].Contains("INTERACT"))
+            {
+                popups[i] = popups[i].Replace("INTERACT", inputActionAsset.FindAction("Interact").GetBindingDisplayString(0));
+            }
+        }
     }
 
 

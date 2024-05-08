@@ -40653,16 +40653,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popups:
-  - Use A and D to move left and right
-  - Press Space to Jump
-  - Press E to Dash
-  - Press Q to switch Skills
-  - Collect  <sprite="PurpleJewel" name="PurpleJewel"> to  use the Vortex Skill
-  - Press E to use the Vortex Skill.
+  - Use MOVELEFT and MOVERIGHT to move left and right
+  - Press JUMP to Jump
+  - Press SKILL to Dash
+  - Press SWITCH to switch Skills
+  - Collect  <sprite="PurpleJewel" name="PurpleJewel">  to use the Vortex Skill
+  - Press SKILL to use the Vortex Skill.
   - Click anywhere on the screen to create a vortex
-  - Collect the Key to unlock the door
-  - Get to the door and press F to complete the level
+  - Collect the     <rotate="270"><sprite="items_sheet" name="items_sheet_4"></rotate>
+    to unlock the door
+  - Get to the door and press INTERACT to complete the level
   popupObject: {fileID: 2012947542}
+  inputActionAsset: {fileID: -944628639613478452, guid: b63db6c0281cf174a92bbcc6aa1c727e, type: 3}
   timeBetweenPopups: 1
 --- !u!4 &1665163082
 Transform:
@@ -40975,7 +40977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7709631973829049794, guid: f516434b6f416884cb520f468378e832, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.07
+      value: 25.81
       objectReference: {fileID: 0}
     - target: {fileID: 7709631973829049794, guid: f516434b6f416884cb520f468378e832, type: 3}
       propertyPath: m_LocalPosition.y

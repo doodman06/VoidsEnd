@@ -6,7 +6,14 @@ public class VortexSkill : Skill
 {
     [SerializeField] private GameObject vortexPrefab;
     private Vector2 vortexPosition;
-    
+
+    private PlayerBehaviour player;
+
+    private void Awake()
+    {
+        player = GetComponent<PlayerBehaviour>();
+    }
+
 
     public void UseSkill()
     {
@@ -35,8 +42,28 @@ public class VortexSkill : Skill
         
     }
 
-    public override IPlayerState GetState()
+   
+    public override void StartSkill()
     {
-        return new PlayerUsingVortexSkill();
+        Debug.Log("Vortex skill started");
+        Time.timeScale = 0.1f;
+    }
+
+    public override void EndSkill()
+    {
+        Debug.Log("Vortex skill ended");
+        Time.timeScale = 1f;
+    }
+
+    public override bool UpdateSkill(PlayerInputEnum input)
+    {
+        if (input == PlayerInputEnum.MouseClick)
+        {
+            UseSkillAtPosition(player.getMousePos());
+            player.Notify(EventEnum.VortexClick);
+            return true;
+
+        }
+        return false;
     }
 }

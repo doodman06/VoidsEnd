@@ -14,7 +14,7 @@ public class PlayerJumping : IPlayerState
 
     public IPlayerState Tick(PlayerBehaviour player, PlayerInputEnum input)
     {
-        if (input == PlayerInputEnum.Skill) return player.getActiveSkillState();
+        if (input == PlayerInputEnum.Skill) return new PlayerUsingSkill();
         if (player.jumpBehaviour.IsGrounded()) return new PlayerIdle();
         if (player.jumpBehaviour.IsFalling()) return new PlayerFalling();
         if (input == PlayerInputEnum.MoveRight) return new PlayerJumpingRight();

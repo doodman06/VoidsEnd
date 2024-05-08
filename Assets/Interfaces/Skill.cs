@@ -12,12 +12,17 @@ public abstract class Skill : MonoBehaviour
         skillNumber += amount;
     }
 
+    public abstract void StartSkill();
+    public abstract void EndSkill();
+
+    public abstract bool UpdateSkill(PlayerInputEnum input);
+
     public int GetUses()
     {
         return skillNumber;
     }
 
-    public abstract IPlayerState GetState();
+   
     public void UpdateUIInfo()
     {
         SkillUIBehaviour.UpdateSkill();

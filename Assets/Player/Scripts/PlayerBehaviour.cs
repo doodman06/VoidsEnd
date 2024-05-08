@@ -55,6 +55,11 @@ public class PlayerBehaviour : MonoBehaviour
         currentSkillIndex = index;
     }
 
+    public Skill GetActiveSkill()
+    {
+        return skills[currentSkillIndex];
+    }
+
     public void switchSkill()
     {
         Notify(EventEnum.Switch);
@@ -99,14 +104,6 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public IPlayerState getActiveSkillState()
-    {
-        if (skills[currentSkillIndex].GetUses() > 0)
-        {
-            return skills[currentSkillIndex].GetState();
-        }
-        return null;
-    }
     public void setCurrentInput(PlayerInputEnum input)
     {
         currentInput = input;
@@ -123,11 +120,6 @@ public class PlayerBehaviour : MonoBehaviour
         return mousePos;
     }
 
-    /*private void Update()
-    {
-        UpdateState(currentInput);
-    }*/
-
     public void UpdateState(PlayerInputEnum input)
     {
         newState = currentState.Tick(this, currentInput);
@@ -138,7 +130,7 @@ public class PlayerBehaviour : MonoBehaviour
             currentState = newState;
             currentState.Enter(this);
         }
-        //Debug.Log(currentState.GetType().Name);
+        
     }
 
     public void Notify(EventEnum currentEvent)

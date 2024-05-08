@@ -12,7 +12,7 @@ public class PlayerIdle : IPlayerState
 
     public IPlayerState Tick(PlayerBehaviour player, PlayerInputEnum input)
     {
-        if(input == PlayerInputEnum.Skill) return player.getActiveSkillState();
+        if(input == PlayerInputEnum.Skill) return new PlayerUsingSkill();
         if(input == PlayerInputEnum.Jump && player.jumpBehaviour.IsGrounded()) return new PlayerJumping();
         if(!player.jumpBehaviour.IsGrounded()) return new PlayerJumpNoDirection();
         if (input == PlayerInputEnum.MoveRight) return new PlayerMovingRight();
