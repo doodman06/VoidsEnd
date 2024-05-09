@@ -11,6 +11,7 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private GameObject levelSelectorPanel;
     [SerializeField] private GameObject controlsPanel;
+    [SerializeField] private GameObject creditsPanel;
     [SerializeField] private TextMeshProUGUI jumpButtonText;
     [SerializeField] private TextMeshProUGUI moveLeftButtonText;
     [SerializeField] private TextMeshProUGUI moveRightButtonText;
@@ -153,6 +154,20 @@ public class StartMenu : MonoBehaviour
         //close controls menu
         Debug.Log("Controls menu closed");
         controlsPanel.SetActive(false);
+    }
+
+    public void OpenCredits()
+    {
+        //open credits menu
+        Debug.Log("Credits menu opened");
+        creditsPanel.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        //close credits menu
+        Debug.Log("Credits menu closed");
+        creditsPanel.SetActive(false);
     }
 
     public void RemapButtonClicked(string currentInput)
