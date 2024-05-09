@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Threading.Tasks;
 
 public class StartMenu : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject levelSelectorPanel;
     [SerializeField] private GameObject controlsPanel;
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private TextMeshProUGUI tutorialClearText;
+    [SerializeField] private TextMeshProUGUI level1ClearText;
+    [SerializeField] private TextMeshProUGUI level2ClearText;
     [SerializeField] private TextMeshProUGUI jumpButtonText;
     [SerializeField] private TextMeshProUGUI moveLeftButtonText;
     [SerializeField] private TextMeshProUGUI moveRightButtonText;
@@ -41,6 +45,7 @@ public class StartMenu : MonoBehaviour
         masterVolumeSliderComponent = masterVolumeSlider.GetComponent<Slider>();
         sfxVolumeSliderComponent = sfxVolumeSlider.GetComponent<Slider>();
         bgmVolumeSliderComponent = bgmVolumeSlider.GetComponent<Slider>();
+        UpdateClearText();
         playerInput = GetComponent<PlayerInput>();
         moveLeftAction = playerInput.actions.FindAction("MoveLeft");
         moveRightAction = playerInput.actions.FindAction("MoveRight");
@@ -264,6 +269,11 @@ public class StartMenu : MonoBehaviour
         SoundManagerBehaviour.UpdateVolume();
     }
 
-
+    public void UpdateClearText()
+    {  
+        tutorialClearText.text = SaveGameSystem.DoesSaveExist("TutorialLevel") ? "Cleared" : "Not Cleared";
+        level1ClearText.text = SaveGameSystem.DoesSaveExist("Level1") ? "Cleared" : "Not Cleared";
+        level2ClearText.text = SaveGameSystem.DoesSaveExist("Level2") ? "Cleared" : "Not Cleared";
+    }
 
 }

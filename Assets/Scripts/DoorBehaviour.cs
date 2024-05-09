@@ -52,6 +52,7 @@ public class DoorBehaviour : MonoBehaviour
 
     public void endLevel()
     {
+        SaveClear();
         //end the level and go to the start screen
         SceneManager.LoadScene("StartScene");
     }
@@ -68,6 +69,15 @@ public class DoorBehaviour : MonoBehaviour
         isLocked = false;
         spriteRenderer.sprite = unlockedSprite;
 
+    }
+
+    private void SaveClear()
+    {
+        SaveData saveData = new SaveData(true, SceneManager.GetActiveScene().name);
+        if(SaveGameSystem.SaveGame(saveData, SceneManager.GetActiveScene().name))
+        {
+            Debug.Log("Game saved");
+        }
     }
     
 }
