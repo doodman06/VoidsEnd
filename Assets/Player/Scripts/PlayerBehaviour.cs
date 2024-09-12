@@ -24,6 +24,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private int currentSkillIndex;
 
+    private bool isDying;
+
     public Animator animator;
 
     public Rigidbody2D rb;
@@ -132,6 +134,10 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void UpdateState(PlayerInputEnum input)
     {
+        if(isDying)
+        {
+            input = PlayerInputEnum.None;
+        }
         newState = currentState.Tick(this, input);
 
         if(newState != null)
@@ -141,6 +147,11 @@ public class PlayerBehaviour : MonoBehaviour
             currentState.Enter(this);
         }
         
+    }
+
+    public void setIsDying(bool state)
+    {
+        isDying = state;
     }
 
     public void Notify(EventEnum currentEvent)

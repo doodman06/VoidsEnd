@@ -9,10 +9,12 @@ public class PlayerHealth : MonoBehaviour
     private static int health;
     [SerializeField] private int maxHealth;
     [SerializeField] private AudioSource deathSound;
+    private PlayerBehaviour playerBehaviour;
     Animator animator;
 
     private void Awake()
     {
+        playerBehaviour = GetComponent<PlayerBehaviour>();
         health = maxHealth;
         animator = GetComponent<Animator>();
         //Time.timeScale = 0.1f;
@@ -41,6 +43,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        playerBehaviour.setIsDying(true);
         animator.SetTrigger(AnimationStruct.Death);
         deathSound.volume = SoundManagerBehaviour.getSfxVolume();
         deathSound.Play();
