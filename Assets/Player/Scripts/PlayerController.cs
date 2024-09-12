@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private InputAction useSKillAction;
     private InputAction switchSkillAction;
     private InputAction mouseClickAction;
+    private bool isInputInitialized = false;
     private void Awake()
     {
         playerBehaviour = GetComponent<PlayerBehaviour>();
@@ -33,6 +34,14 @@ public class PlayerController : MonoBehaviour
         useSKillAction = playerInput.actions.FindAction("UseSkill");
         switchSkillAction = playerInput.actions.FindAction("SwitchSkill");
         mouseClickAction = playerInput.actions.FindAction("MouseClick");
+    }
+
+    private void InitializeInput()
+    {
+        //bind playerInput to keyboard.current
+        playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current);
+        LoadActions();
+        Start();
     }
 
 
@@ -69,6 +78,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!isInputInitialized)
+        {
+            InitializeInput();
+            isInputInitialized = true;
+        }
         if (moveRightAction.IsPressed())
         {
             playerBehaviour.setCurrentInput(PlayerInputEnum.MoveRight);
