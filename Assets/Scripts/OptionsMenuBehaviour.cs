@@ -35,8 +35,14 @@ public class OptionsMenuBehaviour : MonoBehaviour
     public void ReturnToTitle()
     {
         Time.timeScale = 1;
+        ResetPauseState();
         UnityEngine.SceneManagement.SceneManager.LoadScene("StartScene");
     }
 
- 
+    public void ResetPauseState()
+    {
+        isPaused = false;  
+    }
+
+
 }

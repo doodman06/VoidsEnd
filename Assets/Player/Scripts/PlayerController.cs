@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
 
 [RequireComponent(typeof(PlayerBehaviour))]
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private void InitializeInput()
     {
         //bind playerInput to keyboard.current
+        InputUser.PerformPairingWithDevice(Keyboard.current, InputUser.all[0]);
         playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current);
         LoadActions();
         Start();
