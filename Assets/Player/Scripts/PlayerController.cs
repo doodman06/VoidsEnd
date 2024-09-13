@@ -41,7 +41,9 @@ public class PlayerController : MonoBehaviour
     {
         //bind playerInput to keyboard.current
         InputUser.PerformPairingWithDevice(Keyboard.current, InputUser.all[0]);
-        playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", Keyboard.current);
+        InputUser.PerformPairingWithDevice(Mouse.current, InputUser.all[0]);
+        var devices = new InputDevice[] { Keyboard.current, Mouse.current };
+        playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", devices);
         LoadActions();
         Start();
     }
