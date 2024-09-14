@@ -135,9 +135,9 @@ public class StartMenu : MonoBehaviour
     public void UpdateVolumeSliders()
     {
         //update volume sliders
-        masterVolumeSliderComponent.value = PlayerPrefs.GetInt("MasterVolume");
-        sfxVolumeSliderComponent.value = PlayerPrefs.GetInt("SFXVolume");
-        bgmVolumeSliderComponent.value = PlayerPrefs.GetInt("BGMVolume");
+        masterVolumeSliderComponent.value = PlayerPrefs.GetInt("MasterVolume", 50);
+        sfxVolumeSliderComponent.value = PlayerPrefs.GetInt("SFXVolume", 100);
+        bgmVolumeSliderComponent.value = PlayerPrefs.GetInt("BGMVolume", 100);
     }
 
     public void CloseOptions()
